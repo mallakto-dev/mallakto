@@ -1,0 +1,51 @@
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+
+body {
+    margin: 0;
+    background-color: #fffdfa;
+    font-family: 'Manrope', sans-serif;
+    color: #004530;
+    font-weight: 400;
+}
+
+a {
+    text-decoration: none;
+    color: #004530;
+    cursor: pointer;
+
+    &:visited {
+        color: #004530;
+    }
+
+    &:hover {
+        color: #2c6855;
+    }
+}
+
+button, input, select, textarea {
+    font-family: inherit;
+    font-size: 100%;
+}
+
+button:focus {
+        outline: 3px solid #1da1f2;
+        outline-offset: 2px;
+    }
+
+
+main {
+    width: 100%;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    padding-top: 10%;
+  
+    @media (min-width: 768px) {
+      width: 80%;
+      margin: 0 auto;
+    }
+}

@@ -1,0 +1,57 @@
+section {
+    margin: 6rem 0.6rem;
+  
+    @media (min-width: 768px) {
+      margin: 6rem 2rem;
+    }
+  }
+  
+  h2 {
+    text-align: center;
+    color: #004530;
+    font-size: 2rem;
+  }
+  .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  
+    @media (min-width: 768px) {
+      flex-direction: row;
+    }
+  }
+  
+  img {
+    width: 18rem;
+    align-self: center;
+    clip-path: circle(39%);
+  
+    @media (min-width: 768px) {
+      width: 25rem;
+    }
+  }
+  
+  .text-wrapper {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    width: 100%;
+    color: #004530;
+  
+    @media (min-width: 768px) {
+      width: 50%;
+    }
+  
+    @media (min-width: 998px) {
+      text-align: justify;
+    }
+  }
+  
+  p {
+    font-size: 1.1rem;
+    letter-spacing: 1px;
+  
+    @media (min-width: 768px) {
+      letter-spacing: 1px;
+    }
+  }

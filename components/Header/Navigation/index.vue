@@ -3,7 +3,7 @@ defineProps({
   isNavOpen: Boolean,
 })
 
-defineEmits(['closeNav']);
+const emit = defineEmits(['closeNav']);
 
 const isDropdownOpen = ref(false);
 
@@ -12,92 +12,56 @@ const handleDropdownClick = () => {
 }
 
 const { data } = await useFetch<Category[]>('https://mallakto-backend.onrender.com/categories/', {
-    method: 'GET',
-    headers: {
-      'Content-Type': 'application/json',
-    },
+  method: 'GET',
+  headers: {
+    'Content-Type': 'application/json',
+  },
 })
 
 </script>
 <template>
-  <nav
-    v-show="{isNavOpen}"
-    id="navigation"
-    role="navigation"
-  >
-    <ul
-      class="list"
-      role="menubar"
-    >
+  <nav id="navigation" role="navigation">
+    <ul :class="{mobile: isNavOpen}" class="list">
       <li
-        class="list-item"
-        role="none"
-        @click="$emit('closeNav')"
-      >
-        <NuxtLink
-          tab-index="0"
-          to="/"
-          role="menuitem"
-        >
+class="list-item" 
+       @click="emit('closeNav')">
+        <NuxtLink tab-index="0" to="/">
           Главная
         </NuxtLink>
       </li>
       <li
-        class="list-item--dropdown"
-        role="none"
-        :class="{ 'list-item--dropdown--open':
-          isDropdownOpen}"
-        @click="handleDropdownClick"
-      >
-        <button
-          class="list-item--button"
-          :aria-haspopup="isDropdownOpen"
-          :aria-expanded="isDropdownOpen"
-        >
+class="list-item dropdown" 
+ :class="{
+        'open':
+          isDropdownOpen
+      }">
+        <button class="dropdown-button" :aria-haspopup="isDropdownOpen" :aria-expanded="isDropdownOpen" @click="handleDropdownClick" @hover="handleDropdownClick">
           Продукция
+          <Icon
+      size="1em"
+        :name="isDropdownOpen ? 'fa6-solid:angle-up' : 'fa6-solid:angle-down'"
+      />
         </button>
-        <ul
-          class="sublist"
-          role="menu"
-          aria-label="Продукция"
-        >
-<li
-            v-for="category in data"
-            :key="category.id"
-            role="none"
-          >
-            <NuxtLink
-              tab-index="0"
-              :to="`/products/${category.slug}`"
-              role="menuitem"
-              :prefetch=true
-            >
+        <ul class="sublist" role="menu" aria-label="Продукция">
+          <li
+v-for="category in data" :key="category.id" 
+           class="sublist-item">
+            <Icon size="1em" name="fa6-solid:angle-right" />
+            <NuxtLink tab-index="0" :to="`/products/${category.slug}`" :prefetch=true>
               {{ category.name }}
             </NuxtLink>
-          </li> 
+          </li>
         </ul>
       </li>
-      <li
-        role="none"
-        @click="$emit('closeNav')"
-      >
-        <NuxtLink
-          tab-index="0"
-          to="/about"
-          role="menuitem"
-        >
+      <li 
+       class="list-item" @click="emit('closeNav')">
+        <NuxtLink tab-index="0" to="/about">
           О нас
         </NuxtLink>
       </li>
-      <li
-        role="none"
-        @click="$emit('closeNav')"
-      >
-        <NuxtLink
-          tab-index="0"
-          to="/contacts"
-          role="menuitem"
-        >
+      <li 
+       class="list-item" @click="emit('closeNav')">
+        <NuxtLink tab-index="0" to="/contacts">
           Контакты
         </NuxtLink>
       </li>
@@ -107,137 +71,155 @@ const { data } = await useFetch<Category[]>('https://mallakto-backend.onrender.c
 
 <style scoped lang="scss">
 nav {
-    display: flex;
-    position: fixed;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    background-color: rgb(244 185 169);
-    height: 100%;
-    top: 0;
-    left: 0;
-    z-index: 1;
+  display: flex;
+  position: fixed;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  grid-area: navigation;
 
-    @media (min-width: 768px) {
-        display: block;
-        position: relative;
-        background-color: #fffdfa;
-    }
+  @media (min-width: 768px) {
+    flex-direction: row;
+    background-color: #fffdfa;
+  }
 }
 
 .list {
-    display: flex;
-    flex-direction: column;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    font-size: 1.4rem;
-    color: #004530;
+  display: none;
+  flex-direction: column;
+  list-style: none;
+  justify-content: center;
+  padding: 0;
+  margin: 0 auto;
+  font-size: 1.4rem;
+  color: #004530;
+  width: 65%;
+  background-color: #faddd4;
+  height: 100%;
+  z-index: 1;
 
-    @media (min-width: 768px) {
-        font-size: 1.1rem;
-        flex-direction: row;
-        width: 100%;
-        align-items: center;
-        justify-content: space-around;
-        line-height: 3;
-    }
+  &.mobile {
+    display: flex;
+    margin-top: 2rem;
+  }
+
+  @media (min-width: 768px) {
+    display: flex;
+    font-size: 1.1rem;
+    flex-direction: row;
+    width: 100%;
+    align-items: center;
+    justify-content: space-around;
+    line-height: 3;
+    position: relative;
+    background-color: #fffdfa;;
+  }
 }
 
 .list-item {
-    margin-bottom: 1rem;
+  margin-bottom: 1rem;
 
-    @media (min-width: 768px) {
-        margin-bottom: 0;
-        width: 8rem;
-        text-align: center;
-    }
-}
+  @media (min-width: 768px) {
+    margin-bottom: 0;
+    width: 8rem;
+    text-align: center;
+  }
 
-.list-item--dropdown {
-    @extend .list-item;
+  &.dropdown {
+
+  & ul {
+    display: none;
+  }
+
+  @media (min-width: 768px) {
+    position: relative;
+    z-index: 10;
 
     & ul {
-        display: none;
+      display: none;
+    }
+
+    &:focus-within>ul,
+    & ul:hover,
+    &:hover ul,
+    & ul:focus {
+      display: none;
+    }
+  }
+
+  &.open {
+
+    &:focus-within>ul,
+    & ul:hover,
+    &:hover ul,
+    & ul:focus {
+      display: flex;
     }
 
     @media (min-width: 768px) {
-        position: relative;
-        z-index: 10;
-
-        & ul {
-            display: none;
-        }
-
-        &:focus-within>ul,
-        & ul:hover,
-        &:hover ul,
-        & ul:focus {
-            display: none;
-        }
+      & ul:focus {
+        display: flex;
+      }
     }
+  }
 
-    &--open {
-        &:focus-within>ul,
-        & ul:hover,
-        &:hover ul,
-        & ul:focus {
-            display: flex;
-        }
+  .dropdown-button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  color: #004530;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: .4rem;
 
-        @media (min-width: 768px) {
-            & ul:focus {
-                display: flex;
-            }
-        }
-    }
 }
-
-.list-item--button {
-    background-color: transparent;
-    border: none;
-    cursor: pointer;
-    color: #004530;
-
-    @media (min-width: 768px) {
-        width: 8rem;
-    }
-
+}
 }
 
 .sublist {
-    @extend .list;
-    margin-top: 0.5rem;
-    list-style: square;
-    padding: 1rem;
-    transform: translateX(1rem);
-    font-size: 1.2rem;
+  @extend .list;
+  padding: 1rem 0;
+  font-size: 1.2rem;
+  margin: 0;
+  margin-left: 1rem;
 
-    @media (min-width: 768px) {
-        font-size: 0.9rem;
-        flex-direction: column;
-        position: absolute;
-        left: 0rem;
-        top: 2rem;
-        background-color: #fffdfa;
-        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
-        border-top: 2px solid #004530;
-        width: 14rem;
-        padding: 0;
-        list-style: none;
+  .sublist-item {
+    display: inline-flex;
+    align-items: center;
+    gap: .4rem;
+  }
 
-        & li {
-            width: 100%;
+  @media (min-width: 768px) {
+    font-size: 0.9rem;
+    flex-direction: column;
+    position: absolute;
+    left: 1rem;
+    background-color: #fffdfa;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
+    border-top: 2px solid #004530;
+    width: 14rem;
+    padding: 0;
+    height: max-content;
 
-            &:hover,
-            &:focus-within {
-                background-color: #004530;
+    list-style: none;
 
-                a {
-                    color: white;
-                }
-            }
+    & .sublist-item {
+      width: 100%;
+
+        span {
+          margin-left: .5rem;
         }
+
+      &:hover,
+      &:focus-within {
+        background-color: #004530;
+        color: white;
+        a {
+          color: white;
+        }
+      }
     }
+  }
 }
 </style>

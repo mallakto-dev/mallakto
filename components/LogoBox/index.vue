@@ -1,3 +1,11 @@
+<script setup lang="ts">
+ defineProps({
+  gridArea: {
+    type: String,
+    default: '',
+  },
+})
+</script>
 <template>
   <div>
     <NuxtLink to="/">
@@ -11,6 +19,7 @@
 
 <style scoped>
     div {
+      grid-area: v-bind('gridArea');
       align-self: center;
     }
     img {

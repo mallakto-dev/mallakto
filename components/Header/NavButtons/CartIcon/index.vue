@@ -27,17 +27,13 @@ const { cartTotal } = storeToRefs(cartStore)
 
 <style scoped lang="scss">
 div {
-  position: absolute;
-  top: 10px;
-  right: 0px;
+  display: inline-flex;
   width: 3.5rem;
   margin: 0;
   text-align: center;
+  position: relative;
 
   @media (min-width: 768px) {
-    position: relative;
-    top: 10px;
-    right: 0;
     z-index: 1;
     margin: 0;
   }
@@ -51,8 +47,8 @@ div {
   border-radius: 50%;
   display: inline-block;
   color: #fffdfa;
-  position: relative;
-  top: -45px;
-  left: 15px;
+  position: absolute;
+  top: -8px;
+  left: 20px;
 }
 </style>

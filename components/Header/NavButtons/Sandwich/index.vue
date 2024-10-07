@@ -1,18 +1,18 @@
 <script setup lang="ts">
 defineProps({
-  isClose: Boolean,
+  showClose: Boolean,
 })
 </script>
 
 <template>
   <div
     class="sandwich" 
-    :class="{ close: isClose }"
-  />
+    :class="{ close: showClose }"
+  /> 
 </template>
 
 <style scoped lang="scss">
-.sandiwich {
+.sandwich {
   cursor: pointer;
   width: 2rem;
   height: 0.4rem;
@@ -51,4 +51,5 @@ defineProps({
     }
   }
 }
+
 </style>

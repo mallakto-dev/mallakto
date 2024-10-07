@@ -70,11 +70,13 @@ input {
   text-align: center;
   line-height: 2;
   margin: 0;
+  appearance: textfield;
   -moz-appearance: textfield;
   &::-webkit-inner-spin-button,
   &::-webkit-outer-spin-button {
     -webkit-appearance: none;
     -moz-appearance: none;
+    appearance: none;
     margin: 0;
   }
 }

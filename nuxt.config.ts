@@ -25,14 +25,7 @@ export default defineNuxtConfig({
       dirs: ['types/*.ts'],
     },
     image: {
-      presets: {
-        productCard: {
-          modifiers: {
-            width: 264,
-            height: 205
-          }
-        }
-      }
+      domains: ['cdn.sanity.io'],
     },
     compatibilityDate: '2024-08-04'
 })

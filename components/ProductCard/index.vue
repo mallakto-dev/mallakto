@@ -34,7 +34,6 @@ const handleClick = () => {
       <NuxtLink :to="`/products/${categorySlug}/${slug}`">
         <NuxtImg
           :src="imgSrc"
-          preset="productCard"
           alt="Изображение продукта"
         />
         <h3> {{ title }} </h3>
@@ -69,6 +68,7 @@ p {
 img {
   width: 100%;
   object-fit: cover;
+  height: 208px;
 }
 
 button {

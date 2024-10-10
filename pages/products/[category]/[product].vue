@@ -21,7 +21,7 @@ const product = category.value ? category.value.items.find((product: Product) =>
         :slug="product.slug"
         :ingredients="product.ingredients"
         :nutrition-facts="product.nutrition_facts" 
-        shelf-life="product.shelf_life"
+        :shelf-life="product.shelf_life"
         />
 </main>
 </template>

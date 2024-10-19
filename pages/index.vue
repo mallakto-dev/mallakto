@@ -26,7 +26,8 @@ import type { Product } from '~/types/product';
         :weight="product.weight"
         :category-slug="product.category.slug"
         :slug="product.slug"
-        :img-src="product.photo_path"
+        :img-src="product.img_url"
+        :img-description="product.img_caption"
       />
     </ProductsGrid>
     <LegalDisclaimer />

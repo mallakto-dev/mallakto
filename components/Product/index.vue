@@ -9,6 +9,7 @@ defineProps<{
   weight: number,
   imgSrc: string,
   shelfLife: string,
+  imgDescription: string,
 }>();
 
 
@@ -36,7 +37,7 @@ const handleClick = () => {
   <section>
     <NuxtImg
       :src="imgSrc"
-      alt="Тофу копченый"
+      :alt="imgDescription"
     />
     <div>
       <h2>{{ title }}</h2>

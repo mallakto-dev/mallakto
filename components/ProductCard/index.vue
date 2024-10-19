@@ -11,6 +11,7 @@ const {id, title, price, weight, categorySlug, slug, imgSrc} = defineProps<{
         categorySlug: string,
         slug: string,
         imgSrc: string,
+        imgDescription: string,
 }>();
 
 const handleClick = () => {
@@ -34,7 +35,7 @@ const handleClick = () => {
       <NuxtLink :to="`/products/${categorySlug}/${slug}`">
         <NuxtImg
           :src="imgSrc"
-          alt="Изображение продукта"
+          :alt="imgDescription"
         />
         <h3> {{ title }} </h3>
       </NuxtLink>

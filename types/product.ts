@@ -14,6 +14,7 @@ export interface Product {
     slug: string
     name: string
     weight: number
-    photo_path: string,
+    img_url: string,
+    img_caption: string,
     shelf_life: string
 }

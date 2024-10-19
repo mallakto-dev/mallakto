@@ -25,7 +25,8 @@ const { data } = await useFetch<Category>('https://mallakto-backend.onrender.com
         :weight="product.weight"
         :category-slug="`${$route.params.category}`"
         :slug="product.slug"
-        :img-src="product.photo_path"
+        :img-src="product.img_url"
+        :img-description="product.img_caption"
       />
     </ProductsGrid>
   </main>

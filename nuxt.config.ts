@@ -24,8 +24,5 @@ export default defineNuxtConfig({
   imports: {
       dirs: ['types/*.ts'],
     },
-    image: {
-      domains: ['cdn.sanity.io'],
-    },
     compatibilityDate: '2024-08-04'
 })

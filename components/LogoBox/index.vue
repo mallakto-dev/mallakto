@@ -21,8 +21,15 @@
     div {
       grid-area: v-bind('gridArea');
       align-self: center;
+      margin-left: 1rem;
     }
     img {
         width: 7rem;
+    }
+
+    @media (min-width: 768px) {
+      div {
+        margin-left: 0;
+      }
     }
 </style>

@@ -40,10 +40,10 @@ defineProps({
   }
 
   &.close {
-    transform: rotate(45deg) translate(-.1rem,-.4rem);
+    transform: rotate(45deg);
 
     &::before {
-      transform: rotate(-90deg) translate(0,0);
+      transform: rotate(-90deg);
     }
 
     &::after {

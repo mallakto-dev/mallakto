@@ -17,7 +17,7 @@ const toggleMenu = () => {
 </script>
 
 <template>
-  <header :class="{nav_open: isNavOpen}">
+  <header>
     <LogoBox grid-area="logo"/>
     <Navigation :is-nav-open="isNavOpen" @close-nav="clickHandler" @toggle-menu="toggleMenu" />
     <NavButtons :is-nav-open="isNavOpen" @toggle-menu="toggleMenu" />
@@ -30,7 +30,6 @@ header {
   grid-template-areas: 
   "logo navButtons"
   "navigation navigation";
-  padding: 1rem;
   border: 2px solid rgb(0, 69, 48);
   border-top: none;
   background-color: rgb(255, 253, 250);
@@ -42,32 +41,17 @@ header {
   margin: 0 auto;
   width: 95%;
   border-radius: 0 0 10px 10px;
-
-  &.nav_open {
-    background-color: #faddd4;  
-  }
+  overflow: hidden;
 
   @media (min-width: 768px) {
     background-color: #fffdfa;
     margin: 2rem auto;
+    padding: 1rem;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     border-radius: 10px;
     border: 2px solid rgb(0, 69, 48);
-
-    &::before {
-      content: '';
-      position: absolute;
-      top: -6.2vh;
-      left: -9%;
-      bottom: 0;
-      background-color: rgba(255, 253, 250, 0.8);
-      z-index: -5;
-      border-radius: 0;
-      height: 6vh;
-      width: 100vw;
-    }
   }
 
   @media (min-width: 1024px) {

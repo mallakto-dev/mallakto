@@ -6,7 +6,8 @@ export default defineNuxtConfig({
     "@nuxt/eslint",
     "@nuxt/icon",
     '@pinia/nuxt',
-    "@nuxt/fonts"
+    "@nuxt/fonts",
+    '@vueuse/nuxt',
   ],
   typescript: {
       typeCheck: true

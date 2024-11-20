@@ -3,14 +3,12 @@
 const route = useRoute()
 
 
-const { data } = await useFetch<Category>('https://mallakto-backend.onrender.com/categories/' + route.params.category, {
+const { data } = await useAsyncData<Category>("category", () => $fetch('/api/categories/' + route.params.category, {
   method: 'GET',
   headers: {
     'Content-Type': 'application/json',
   },
-  key: 'category',
-})
-
+}))
 </script>
 
 <template>

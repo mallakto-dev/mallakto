@@ -2,7 +2,7 @@
 import type { Product } from '~/types/product';
 
 
-  const { data } = await useFetch<Product[]>('https://mallakto-backend.onrender.com/items/', {
+  const { data } = await useFetch<Product[]>('/api/products', {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',

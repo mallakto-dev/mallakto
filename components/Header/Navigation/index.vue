@@ -34,11 +34,12 @@ watch(() => isMobile, () => {
   }
 })
 
-const { data } = await useFetch<Category[]>('https://mallakto-backend.onrender.com/categories/', {
+const { data } = await useFetch<Category[]>('/api/categories', {
   method: 'GET',
   headers: {
     'Content-Type': 'application/json',
   },
+  key: 'categories',
 })
 
 </script>
@@ -170,6 +171,7 @@ nav {
   &.open {
     display: flex;
     gap: .2rem;
+    padding-left: .4rem;
   }
 
   .dropdown-item {

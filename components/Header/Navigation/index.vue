@@ -171,7 +171,6 @@ nav {
   &.open {
     display: flex;
     gap: .2rem;
-    padding-left: .4rem;
   }
 
   .dropdown-item {
@@ -196,9 +195,7 @@ nav {
 
     & .dropdown-item {
       width: 100%;
-        span {
-          margin-left: .5rem;
-        }
+      padding-left: .5rem;
 
       &:hover,
       &:focus-within {

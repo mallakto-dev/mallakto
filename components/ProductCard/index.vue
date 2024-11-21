@@ -6,7 +6,7 @@ const { addProduct } = cartStore;
 const {id, title, price, weight, categorySlug, slug, imgSrc} = defineProps<{
         id: string,
         title: string,
-        price: number,
+        price: string,
         weight: number,
         categorySlug: string,
         slug: string,

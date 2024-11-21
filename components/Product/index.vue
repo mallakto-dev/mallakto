@@ -3,7 +3,7 @@
 defineProps<{
   id: string,
   title: string,
-  price: number,
+  price: string,
   ingredients: string,
   nutritionFacts: string,
   weight: number,

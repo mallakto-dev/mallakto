@@ -2,9 +2,9 @@
 
 const route = useRoute();
 
-const { data: category } = useNuxtData<Category>('category');
+const { data: products } = useNuxtData<Product[]>('products');
 
-const product = category.value ? category.value.items.find((product: Product) => product.slug === route.params.product) : null;
+const product = products.value ? products.value.find((product: Product) => product.slug === route.params.product) : null;
 
 </script>
 

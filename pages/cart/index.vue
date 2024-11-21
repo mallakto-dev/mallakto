@@ -51,10 +51,11 @@ const totalInRubles = computed(() => priceToRubles(totalPrice.value));
 section {
   width: 100%;
   font-size: 1rem;
+  margin: 2rem auto;
+  padding: 1rem;
 
   @media (min-width: 520px) {
     width: 85%;
-    margin: 2rem auto;
     font-size: 1.2rem;
   }
 }

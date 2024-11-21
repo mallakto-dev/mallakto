@@ -1,5 +1,5 @@
-export const priceToRubles = (price: number) =>
+export const priceToRubles = (price: string) =>
   new Intl.NumberFormat("ru-Ru", {
     style: "currency",
     currency: "RUB",
-  }).format(price)
+  }).format(parseInt(price))

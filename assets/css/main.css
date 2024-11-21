@@ -42,7 +42,7 @@ main {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    padding-top: 10%;
+    padding-top: 20%;
   
     @media (min-width: 768px) {
       width: 95%;

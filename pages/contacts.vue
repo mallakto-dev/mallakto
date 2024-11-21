@@ -44,10 +44,10 @@
 section {
   width: 100%;
   font-size: 1rem;
+  margin: 2rem auto;
 
   @media (min-width: 520px) {
     width: 60%;
-    margin: 2rem auto;
     font-size: 1.2rem;
   }
 }

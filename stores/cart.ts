@@ -14,8 +14,6 @@ export interface CartProduct {
     quantity: number
 }
 
-
-
 export const useCartStore = defineStore(
     "cart",
     () => {
@@ -26,6 +24,14 @@ export const useCartStore = defineStore(
         const totalPrice = computed(() => {
             return cart.value.reduce((acc, product) => acc + parseInt(product.price) * product.quantity, 0);
         });
+        const getOrderItems = computed(() => {
+            return cart.value.map((product) => {
+                return {
+                    product: product.id,
+                    quantity: product.quantity
+                }
+            });
+        },);
         function addProduct(product: CartProduct) {
             cart.value.push(product);
         };
@@ -45,6 +51,12 @@ export const useCartStore = defineStore(
                 product.quantity--;
             }
         }
-        return { cart, addProduct, removeProduct, totalPrice, cartTotal, increaseQuantity, decreaseQuantity };
-    }
+        function clearCart() {
+            cart.value = [];
+        }
+        return { cart, addProduct, removeProduct, totalPrice, cartTotal, increaseQuantity, decreaseQuantity, getOrderItems, clearCart };
+    },
+    {
+        persist: true,
+    },
     );

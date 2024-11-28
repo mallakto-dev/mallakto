@@ -50,7 +50,6 @@ defineProps({
 .product {
   display: flex;
   flex-direction: row;
-  flex-wrap: wrap;
   width: 100%;
   padding: 0.8rem;
   align-items: center;

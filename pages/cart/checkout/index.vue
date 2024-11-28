@@ -1,11 +1,24 @@
 <script setup lang="ts">
 import { useInput } from '~/composables/useInput';
-import type { CustomerDetails } from '~/types/customerDetails';
 
 definePageMeta({
   title: "Оформить заказ | Mallakto",
   description: 'Оформление заказа',
+  middleware: [
+    function (to, from) {
+      const cartStore = useCartStore();
+      const { cartTotal } = toRefs(cartStore);
+
+      if (from.path !== "/cart" || cartTotal.value === 0) {
+            return navigateTo("/")
+        }
+    },
+  ],
 });
+
+const cartStore = useCartStore();
+const { getOrderItems } = toRefs(cartStore);
+
 
 const name = useInput<string>("", {
   required: "Введите имя",
@@ -30,20 +43,38 @@ const showAddressField = computed(() => delivery.value.value === "delivery");
 
 const areInputsValid = computed(() => name.value.inputIsValid && phone.value.inputIsValid && email.value.inputIsValid && delivery.value.inputIsValid && (delivery.value.value === "delivery" ? address.value.inputIsValid : true) && payment.value.inputIsValid);
 
-const onSubmit = (e: Event) => {
+const onSubmit = async (e: Event) => {
   e.preventDefault();
   if (areInputsValid.value) {
-    const data: CustomerDetails = {
+    const data = {
+      username: null,
       name: name.value.value,
       phone: phone.value.value,
       email: email.value.value,
-      delivery: delivery.value.value,
-      payment: payment.value.value,
+      order_type: delivery.value.value,
+      payment_type: payment.value.value,
+      address: "",
+      order_items: getOrderItems.value,
     };
     if (delivery.value.value) {
       data.address = address.value.value;
     }
-    JSON.stringify(data, null, 2);
+    try {
+     const sendOrder = await fetch('/api/order', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data),
+    });
+    if (sendOrder.ok) {
+      cartStore.clearCart();
+      navigateTo('/cart/checkout/submitted');
+    }
+    } catch (error) {
+      console.error(error);
+    }
+
   }
 };
 

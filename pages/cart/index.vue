@@ -2,18 +2,11 @@
 
 const cartStore = useCartStore();
 
-const { cart, totalPrice, cartTotal } = toRefs(cartStore);
+const { cart, totalPrice } = toRefs(cartStore);
 
 definePageMeta({
   title: 'Корзина',
   description: 'Корзина с товарами',
-  middleware: [
-    function (to, from) {
-      if (to.path === '/cart/checkout' && from.path !== "/cart" && cartTotal.value === 0) {
-            return navigateTo("/")
-        }
-    },
-  ],
 });
 
 

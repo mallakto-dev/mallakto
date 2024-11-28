@@ -16,7 +16,7 @@
 <style scoped>
 
 section {
-  margin: 6rem 2rem;
+  margin: 0rem auto;
   color: #004530;
 };
 
@@ -25,4 +25,7 @@ p {
   font-weight: 600;
 };
 
+a {
+  text-align: center;
+};
 </style>

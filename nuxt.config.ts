@@ -6,6 +6,7 @@ export default defineNuxtConfig({
     "@nuxt/eslint",
     "@nuxt/icon",
     '@pinia/nuxt',
+    'pinia-plugin-persistedstate/nuxt',
     "@nuxt/fonts",
     '@vueuse/nuxt',
   ],

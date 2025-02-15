@@ -1,4 +1,3 @@
-// https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   devtools: { enabled: true },
   modules: [
@@ -25,6 +24,9 @@ export default defineNuxtConfig({
   },
   imports: {
       dirs: ['types/*.ts'],
+    },
+    runtimeConfig: {
+      BACKEND_URL: import.meta.env.BACKEND_URL
     },
     compatibilityDate: '2024-08-04'
 })

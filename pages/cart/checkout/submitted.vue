@@ -4,7 +4,7 @@
 <template>
   <main>
   <section>
-    <h1>Ваш заказ был успешно отправлен!</h1>
+    <h2>Ваш заказ был успешно отправлен!</h2>
       <p>Мы свяжемся с Вами в ближайшее время.</p>
       <NuxtLink to="/"> На главную </NuxtLink>
   </section>
@@ -16,7 +16,8 @@
 <style scoped>
 
 section {
-  margin: 0rem auto;
+  margin: 5rem auto;
+  padding: 1.5rem;
   color: #004530;
 };
 

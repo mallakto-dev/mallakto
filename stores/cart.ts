@@ -33,14 +33,18 @@ export const useCartStore = defineStore(
             });
         },);
         function addProduct(product: CartProduct) {
+            const productInCart = cart.value.find((p) => p.id === product.id);
+            if (productInCart) {
+                increaseQuantity(product.id);
+            } else {
             cart.value.push(product);
+            }
         };
         function removeProduct(id: string) {
             cart.value = cart.value.filter((p) => p.id !== id);
         };
         function increaseQuantity(id: string){
             const product = cart.value.find((p) => p.id === id);
-            console.log(product)
             if (product) {
                 product.quantity++;
             }

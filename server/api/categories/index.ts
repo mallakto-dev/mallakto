@@ -1,5 +1,4 @@
 export default defineEventHandler(async () => {
-
 try {
     const categories = await fetch("https://mallakto-backend.onrender.com/categories/", {
         method: 'GET',

@@ -19,14 +19,14 @@ section {
   margin: 5rem auto;
   padding: 1.5rem;
   color: #004530;
-};
+}
 
 p {
   font-size: 1.4rem;
   font-weight: 600;
-};
+}
 
 a {
   text-align: center;
-};
+}
 </style>

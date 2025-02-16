@@ -51,9 +51,9 @@ const onBlur = () => {
 label {
     font-size: 1.1rem;
     line-height: 2;
-};
+}
 
 input {
     margin-right: "none";
-};
+}
 </style>

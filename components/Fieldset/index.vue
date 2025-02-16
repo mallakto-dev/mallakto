@@ -29,10 +29,10 @@ fieldset {
   @media (min-width: 500px) {
     width: 60%;
   }
-};
+}
 
 legend {
   font-size: 1.4rem;
-};
+}
 
 </style>

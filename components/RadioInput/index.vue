@@ -38,11 +38,11 @@ const { name, label, id, radioValue } = defineProps<{
 label {
   font-size: 1.1rem;
   line-height: 2;
-};
+}
 
 
 input[type="radio"] {
   margin-right: 10px;
-};
+}
 
 </style>

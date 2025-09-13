@@ -13,15 +13,6 @@ export default defineNuxtConfig({
       typeCheck: true
   },
   css: ['~/assets/css/main.css'],
-  vite: {
-    css: {
-      preprocessorOptions: {
-        scss: {
-          api: 'modern-compiler',
-        }
-      }
-    }
-  },
   imports: {
       dirs: ['types/*.ts'],
     },

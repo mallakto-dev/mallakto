@@ -1,5 +1,6 @@
 <script setup lang="ts">
 const cartStore = useCartStore();
+const { notifySuccess } = useToast();
 
 const { addProduct } = cartStore;
 
@@ -15,6 +16,7 @@ const {id, title, price, weight, categorySlug, slug, imgSrc} = defineProps<{
 }>();
 
 const handleClick = () => {
+  notifySuccess(`Продукт ${title} был успешно добавлен в корзину`);
   addProduct({
     id,
     title,

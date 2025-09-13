@@ -1,6 +1,6 @@
 <script setup  lang="ts">
 
-defineProps<{
+const { id, title, price, weight, imgSrc } = defineProps<{
   id: string,
   title: string,
   price: string,
@@ -11,6 +11,9 @@ defineProps<{
   shelfLife: string,
   imgDescription: string,
 }>();
+
+const { addProduct } = useCartStore();
+const { notifySuccess } = useToast();
 
 
 const numberOfitems = ref<number>(1);
@@ -26,7 +29,17 @@ const decrease = () => {
 };
 
 const handleClick = () => {
-  console.log(numberOfitems.value);
+  notifySuccess(`Продукт ${title} был успешно добавлен в корзину`);
+  addProduct({
+    id,
+    title,
+    price,
+    weight,
+    categorySlug,
+    slug,
+    quantity: numberOfitems.value,
+    imgSrc: imgSrc,
+  })
 };
 
 </script>

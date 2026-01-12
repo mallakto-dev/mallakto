@@ -24,6 +24,7 @@ defineEmits(['increase', 'decrease'])
     <button
       aria-label="Уменьшить количество товара в корзине на один"
       @click="$emit('decrease')"
+      type="button"
     >
       −
     </button>
@@ -36,6 +37,7 @@ defineEmits(['increase', 'decrease'])
     <button
       aria-label="Увеличить количество товара в корзине на один"
       @click="$emit('increase')"
+      type="button"
     >
       +
     </button>

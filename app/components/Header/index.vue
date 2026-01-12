@@ -42,8 +42,10 @@ header {
   width: 95%;
   border-radius: 0 0 10px 10px;
   overflow: hidden;
+  }
 
   @media (min-width: 768px) {
+    header {
     background-color: #fffdfa;
     margin: 2rem auto;
     padding: 1rem;
@@ -52,12 +54,14 @@ header {
     justify-content: space-between;
     border-radius: 10px;
     border: 2px solid rgb(0, 69, 48);
+    }
   }
 
   @media (min-width: 1024px) {
+    header {
     width: 85%;
     gap: 1rem;
+    }
   }
-}
 
 </style>

@@ -4,15 +4,15 @@ const { notifySuccess } = useToast();
 
 const { addProduct } = cartStore;
 
-const {id, title, price, weight, categorySlug, slug, imgSrc} = defineProps<{
-        id: string,
-        title: string,
-        price: string,
-        weight: number,
-        categorySlug: string,
-        slug: string,
-        imgSrc: string,
-        imgDescription: string,
+const { id, title, price, weight, categorySlug, slug, imgSrc } = defineProps<{
+  id: string;
+  title: string;
+  price: number;
+  weight: string;
+  categorySlug: string;
+  slug: string;
+  imgSrc: string;
+  imgDescription: string;
 }>();
 
 const handleClick = () => {
@@ -26,28 +26,21 @@ const handleClick = () => {
     slug,
     quantity: 1,
     imgSrc: imgSrc,
-  })
+  });
 };
-
 </script>
 
 <template>
   <li>
     <div>
       <NuxtLink :to="`/products/${categorySlug}/${slug}`">
-        <NuxtImg
-          :src="imgSrc"
-          :alt="imgDescription"
-        />
-        <h3> {{ title }} </h3>
+        <NuxtImg :src="imgSrc" :alt="imgDescription" />
+        <h3>{{ title }}</h3>
       </NuxtLink>
       <p>{{ weight }}г</p>
       <p>{{ priceToRubles(price) }}</p>
     </div>
-    <button
-@click="handleClick">
-      Добавить в корзину +
-    </button>
+    <button @click="handleClick" type="button">Добавить в корзину +</button>
   </li>
 </template>
 

@@ -1,93 +1,94 @@
 <script setup lang="ts">
-
-import { useMediaQuery } from '@vueuse/core'
+import { useMediaQuery, onClickOutside } from "@vueuse/core";
 
 defineProps({
   isNavOpen: Boolean,
-})
+});
 
-const isMobile = useMediaQuery('(max-width: 767px)');
+const isMobile = useMediaQuery("(max-width: 767px)");
 
-const emit = defineEmits(['closeNav']);
+const emit = defineEmits(["closeNav"]);
 
 const isDropdownOpen = ref(false);
+const dropdownRef = ref<HTMLElement | null>(null);
 
 const handleDropdownClick = () => {
+  console.log("Dropdown clicked");
   isDropdownOpen.value = !isDropdownOpen.value;
-}
+};
 
 const closeDropdown = () => {
   isDropdownOpen.value = false;
-}
+};
 
-onMounted(() => {
-  window.addEventListener('click', closeDropdown);
-})
+onClickOutside(dropdownRef, closeDropdown);
 
-onUnmounted(() => {
-  window.removeEventListener('click', closeDropdown);
-})
-
-watch(() => isMobile, () => {
-  if (!isMobile.value) {
-    emit('closeNav');
+watch(
+  isMobile,
+  () => {
+    if (!isMobile.value) {
+      emit("closeNav");
+    }
   }
-})
+);
 
-const { data } = await useFetch<Category[]>('/api/categories', {
-  method: 'GET',
-  headers: {
-    'Content-Type': 'application/json',
-  },
-  key: 'categories',
-})
+const query = groq`*[_type == "category"]{
+  "id": _id,
+  "title": title,
+  "slug": slug,
+  "index": index
+}`;
+
+const sanity = useSanity();
+
+const { data } = await useAsyncData("categories", () =>
+  sanity.fetch<Category[]>(query)
+);
 
 </script>
 <template>
-  <nav id="navigation" role="navigation">
-    <ul class="list" :class="{'mobile': isNavOpen && isMobile}" >
-      <li
-class="list-item" 
-       @click="emit('closeNav')">
-        <NuxtLink tab-index="0" to="/">
-          Главная
-        </NuxtLink>
+  <nav id="navigation">
+    <ul class="list" :class="{ mobile: isNavOpen && isMobile }">
+      <li class="list-item" @click="emit('closeNav')">
+        <NuxtLink tabindex="0" to="/"> Главная </NuxtLink>
       </li>
-      <li
-class="list-item">
-        <button class="dropdown-button" :aria-haspopup="isDropdownOpen" :aria-expanded="isDropdownOpen" @click.stop="handleDropdownClick">
+      <li class="list-item" ref="dropdownRef">
+        <button
+          class="dropdown-button"
+          :aria-haspopup="isDropdownOpen"
+          :aria-expanded="isDropdownOpen"
+          @click="() => console.log('clicked')"
+          type="button"
+        >
           Продукция
           <Icon
-      size="1em"
-        :name="isDropdownOpen ? 'fa6-solid:angle-up' : 'fa6-solid:angle-down'"
-      />
+            size="1em"
+            :name="
+              isDropdownOpen ? 'fa6-solid:angle-up' : 'fa6-solid:angle-down'
+            "
+          />
         </button>
         <ul
-class="dropdown" :class="{
-        'open':
-          isDropdownOpen
-      }" role="menu" aria-label="Продукция">
-          <li
-v-for="category in data" :key="category.id" 
-           class="dropdown-item">
+          class="dropdown"
+          :class="{
+            open: isDropdownOpen,
+          }"
+          role="menu"
+          aria-label="Продукция"
+        >
+          <li v-for="category in data" :key="category.id" class="dropdown-item">
             <Icon size="1em" name="fa6-solid:angle-right" />
-            <NuxtLink tab-index="0" :to="`/products/${category.slug}`" :prefetch=true>
-              {{ category.name }}
+            <NuxtLink tabindex="0" :to="`/products/${category.slug.current}`">
+              {{ category.title }}
             </NuxtLink>
           </li>
         </ul>
       </li>
-      <li 
-       class="list-item" @click="emit('closeNav')">
-        <NuxtLink tab-index="0" to="/about">
-          О нас
-        </NuxtLink>
+      <li class="list-item" @click="emit('closeNav')">
+        <NuxtLink tabindex="0" to="/about"> О нас </NuxtLink>
       </li>
-      <li 
-       class="list-item" @click="emit('closeNav')">
-        <NuxtLink tab-index="0" to="/contacts">
-          Контакты
-        </NuxtLink>
+      <li class="list-item" @click="emit('closeNav')">
+        <NuxtLink tabindex="0" to="/contacts"> Контакты </NuxtLink>
       </li>
     </ul>
   </nav>
@@ -137,7 +138,7 @@ nav {
     justify-content: space-around;
     line-height: 3;
     position: relative;
-    background-color: #fffdfa;;
+    background-color: #fffdfa;
   }
 }
 
@@ -157,7 +158,7 @@ nav {
   padding: 0;
   display: inline-flex;
   align-items: center;
-  gap: .4rem;
+  gap: 0.4rem;
 }
 
 .dropdown {
@@ -170,13 +171,13 @@ nav {
 
   &.open {
     display: flex;
-    gap: .2rem;
+    gap: 0.2rem;
   }
 
   .dropdown-item {
     display: inline-flex;
     align-items: center;
-    gap: .4rem;
+    gap: 0.4rem;
   }
 
   @media (min-width: 768px) {
@@ -195,7 +196,7 @@ nav {
 
     & .dropdown-item {
       width: 100%;
-      padding-left: .5rem;
+      padding-left: 0.5rem;
 
       &:hover,
       &:focus-within {

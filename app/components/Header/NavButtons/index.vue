@@ -14,6 +14,7 @@ const emit = defineEmits(['toggleMenu']);
 <div class="nav-buttons">
     <CartIcon />
     <button
+      type="button"
       :class="{ close: isNavOpen }" aria-label="Menu" aria-controls="navigation" :aria-expanded="isNavOpen"
       @click="emit('toggleMenu')">
       <Sandwich :show-close="isNavOpen" />

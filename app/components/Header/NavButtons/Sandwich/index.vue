@@ -5,15 +5,16 @@ defineProps({
 </script>
 
 <template>
-  <div
+  <span
     class="sandwich" 
     :class="{ close: showClose }"
-  /> 
+  ></span> 
 </template>
 
 <style scoped lang="scss">
 .sandwich {
   cursor: pointer;
+  display: block;
   width: 2rem;
   height: 0.4rem;
   background-color: #004530;

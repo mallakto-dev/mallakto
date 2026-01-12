@@ -4,7 +4,13 @@ const route = useRoute();
 
 const { data: products } = useNuxtData<Product[]>('products');
 
-const product = products.value ? products.value.find((product: Product) => product.slug === route.params.product) : null;
+console.log("Products: ", products.value);
+const product = computed(() => {
+  return products.value?.find(p => 
+    p.category.slug.current === route.params.category && 
+    p.slug.current === route.params.product
+  );
+});
 
 </script>
 
@@ -13,13 +19,13 @@ const product = products.value ? products.value.find((product: Product) => produ
  <Product
         v-if="product"
         :id="product.id"
-        :title="product.name"
+        :title="product.title"
         :price="product.price"
         :weight="product.weight"
         :category-slug="`${$route.params.category}`"
         :img-src="product.img_url" 
         :img-description="product.img_caption"
-        :slug="product.slug"
+        :slug="product.slug.current"
         :ingredients="product.ingredients"
         :nutrition-facts="product.nutrition_facts" 
         :shelf-life="product.shelf_life"

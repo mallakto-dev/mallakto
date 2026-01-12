@@ -1,15 +1,19 @@
 <script setup  lang="ts">
+import type { st } from 'vue-router/dist/router-CWoNjPRp.mjs';
 
-const { id, title, price, weight, imgSrc } = defineProps<{
+
+const { id, title, price, weight, imgSrc, slug, categorySlug } = defineProps<{
   id: string,
   title: string,
-  price: string,
+  price: number,
   ingredients: string,
   nutritionFacts: string,
-  weight: number,
+  weight: string,
   imgSrc: string,
   shelfLife: string,
   imgDescription: string,
+  slug: string,
+  categorySlug: string
 }>();
 
 const { addProduct } = useCartStore();
@@ -75,7 +79,7 @@ const handleClick = () => {
         :number-of-items="numberOfitems"
         :is-label-displayed="true"
       />
-      <button @click="handleClick">
+      <button @click="handleClick" type="button">
         Добавить в корзину
         <Icon
         name="fa6-solid:cart-shopping"

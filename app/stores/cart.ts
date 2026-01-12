@@ -7,10 +7,10 @@ export interface CartProduct {
     ingredients?: string
     metaContent?: { keywords: string, description: string }
     nutriton_facts?: string
-    price: string
+    price: number
     slug: string
     title: string
-    weight: number
+    weight: string
     quantity: number
 }
 
@@ -22,7 +22,7 @@ export const useCartStore = defineStore(
             return cart.value.reduce((acc, product) => acc + product.quantity, 0);
         });
         const totalPrice = computed(() => {
-            return cart.value.reduce((acc, product) => acc + parseInt(product.price) * product.quantity, 0);
+            return cart.value.reduce((acc, product) => acc + product.price * product.quantity, 0);
         });
         const getOrderItems = computed(() => {
             return cart.value.map((product) => {

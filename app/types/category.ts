@@ -1,7 +1,7 @@
 
 export interface Category {
     id: number,
-    name: string,
-    slug: string,
+    title: string,
+    slug: { current: string },
     items: Product[]
 }

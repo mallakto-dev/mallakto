@@ -36,6 +36,7 @@ defineProps({
         </div>
 
         <button
+          type="button"
           aria-label="Удалить"
           @click="removeProduct(item.id)"
         >

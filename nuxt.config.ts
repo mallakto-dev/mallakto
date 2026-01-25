@@ -31,11 +31,11 @@ export default defineNuxtConfig({
       },
     },
   },
-/*   vite: {
+vite: {
     optimizeDeps: {
       include: ['react-compiler-runtime', 'react', 'react-dom']
     },
-  }, */
+  },
   runtimeConfig: {
       BACKEND_URL: import.meta.env.BACKEND_URL
     },

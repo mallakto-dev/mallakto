@@ -57,7 +57,7 @@ const { data } = await useAsyncData("categories", () =>
           class="dropdown-button"
           :aria-haspopup="isDropdownOpen"
           :aria-expanded="isDropdownOpen"
-          @click="() => console.log('clicked')"
+          @click="() => handleDropdownClick()"
           type="button"
         >
           Продукция

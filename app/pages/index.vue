@@ -11,7 +11,10 @@ const query = groq`*[_type == "product"]{
   },
   "slug": slug,
   "img_url": image.asset->url,
-  "img_caption": image.alt
+  "img_caption": image.alt,
+  "ingredients": ingredients,
+  "nutritonal_facts": nutritonal_facts,
+  "bestBefore": bestBefore
 }`
 const sanity = useSanity()
 

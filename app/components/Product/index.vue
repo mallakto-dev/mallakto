@@ -1,5 +1,4 @@
 <script setup  lang="ts">
-import type { st } from 'vue-router/dist/router-CWoNjPRp.mjs';
 
 
 const { id, title, price, weight, imgSrc, slug, categorySlug } = defineProps<{
@@ -7,10 +6,10 @@ const { id, title, price, weight, imgSrc, slug, categorySlug } = defineProps<{
   title: string,
   price: number,
   ingredients: string,
-  nutritionFacts: string,
+  nutritonalFacts: string,
   weight: string,
   imgSrc: string,
-  shelfLife: string,
+  bestBefore: string,
   imgDescription: string,
   slug: string,
   categorySlug: string
@@ -63,14 +62,14 @@ const handleClick = () => {
         <strong>Состав:</strong>  {{ ingredients }}
       </p>
       <p>
-        <strong>Пищевая ценность:</strong> {{ nutritionFacts }}
+        <strong>Пищевая ценность:</strong> {{ nutritonalFacts }}
       </p>
       <p>
         <strong>Вес:</strong> {{ weight }} г
       </p>
       <p>
         <strong>Срок Годности: </strong>
-        {{ shelfLife }}
+        {{ bestBefore }}
       </p>
       <QuantityPicker
         :is-inline="false"

@@ -4,7 +4,6 @@ const route = useRoute();
 
 const { data: products } = useNuxtData<Product[]>('products');
 
-console.log("Products: ", products.value);
 const product = computed(() => {
   return products.value?.find(p => 
     p.category.slug.current === route.params.category && 
@@ -27,8 +26,8 @@ const product = computed(() => {
         :img-description="product.img_caption"
         :slug="product.slug.current"
         :ingredients="product.ingredients"
-        :nutrition-facts="product.nutrition_facts" 
-        :shelf-life="product.shelf_life"
+        :nutritonal-facts="product.nutritonal_facts" 
+        :best-before="product.bestBefore"
         />
 </main>
 </template>

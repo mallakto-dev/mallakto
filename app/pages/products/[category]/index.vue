@@ -15,14 +15,17 @@ const query = groq`*[_type == "category" && slug.current == $slug][0]{
     },
     "slug": slug,
     "img_url": image.asset->url,
-    "img_caption": image.alt
+    "img_caption": image.alt,
+    "ingredients": ingredients,
+    "nutritonal_facts": nutritonal_facts,
+    "bestBefore": bestBefore
   }
 }`
 
 const { params } = useRoute();
 const sanity = useSanity()
 
-const { data } = await useAsyncData(`category-${params.category}`, () => sanity.fetch<Category>(query, { slug: params.category }))
+const { data } = useAsyncData(`category-${params.category}`, () => sanity.fetch<Category>(query, { slug: params.category }))
 
 </script>
 

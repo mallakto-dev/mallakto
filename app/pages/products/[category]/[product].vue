@@ -4,7 +4,15 @@ const route = useRoute();
 
 const { data: products } = useNuxtData<Product[]>('products');
 
+const { data: category } = useNuxtData<Category>(`category-${route.params.category}`);
+
 const product = computed(() => {
+  if (products.value === undefined) {
+    // Fallback to category data if products are not available
+    return category.value?.items.find(p => 
+      p.slug.current === route.params.product
+    );
+  }
   return products.value?.find(p => 
     p.category.slug.current === route.params.category && 
     p.slug.current === route.params.product

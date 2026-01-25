@@ -13,7 +13,6 @@ const isDropdownOpen = ref(false);
 const dropdownRef = ref<HTMLElement | null>(null);
 
 const handleDropdownClick = () => {
-  console.log("Dropdown clicked");
   isDropdownOpen.value = !isDropdownOpen.value;
 };
 

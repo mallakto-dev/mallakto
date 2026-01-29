@@ -1,4 +1,4 @@
-ARG NODE_VERSION=20.18.3
+ARG NODE_VERSION=22
 
 FROM node:${NODE_VERSION}-alpine AS base
 
@@ -14,7 +14,7 @@ RUN npm install
 
 COPY --link . .
 
-RUN npm run build
+RUN npm run generate
 
 # Run
 FROM base

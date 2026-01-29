@@ -27,7 +27,8 @@ export const useCartStore = defineStore(
         const getOrderItems = computed(() => {
             return cart.value.map((product) => {
                 return {
-                    product: product.id,
+                    price: product.price,
+                    title: product.title,
                     quantity: product.quantity
                 }
             });

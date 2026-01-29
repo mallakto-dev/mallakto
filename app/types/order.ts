@@ -1,9 +1,8 @@
 export interface Order {
-    id: string,
-    username?: string,
     name: string,
-    order_tems: {
-        product: string,
+    order_items: {
+        price: number,
+        title: string,
         quantity: number
     }[],
     payment_type: string,

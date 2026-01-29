@@ -47,7 +47,6 @@ const onSubmit = async (e: Event) => {
   e.preventDefault();
   if (areInputsValid.value) {
     const data = {
-      username: null,
       name: name.value.value,
       phone: phone.value.value,
       email: email.value.value,
@@ -55,6 +54,7 @@ const onSubmit = async (e: Event) => {
       payment_type: payment.value.value,
       address: "",
       order_items: getOrderItems.value,
+      total: cartStore.cartTotal,
     };
     if (delivery.value.value) {
       data.address = address.value.value;
@@ -97,9 +97,9 @@ id="phone" v-model="phone" name="phone" type="tel" label="Телефон"
 
       <Fieldset id="delivery" legend="Способ доставки">
         <div>
-          <RadioInput id="delivery" v-model="delivery" label="Доставка" name="delivery" radio-value="delivery" />
+          <RadioInput id="delivery" v-model="delivery" label="Доставка" name="delivery" radio-value="Доставка" />
 
-          <RadioInput id="no-delivery" v-model="delivery" label="Самовывоз" name="delivery" radio-value="pickup" />
+          <RadioInput id="no-delivery" v-model="delivery" label="Самовывоз" name="delivery" radio-value="Самовывоз" />
           <p v-for="(error, index) in delivery.errors" :key="index">
             {{ error }}
           </p>
@@ -117,9 +117,9 @@ id="phone" v-model="phone" name="phone" type="tel" label="Телефон"
       <Fieldset id="payment" legend="Способ оплаты">
         <RadioInput
 id="payment-transfer" v-model="payment" label="Перевод на счет" name="payment"
-          radio-value="transfer" />
+          radio-value="Перевод на счет" />
 
-        <RadioInput id="payment-cash" v-model="payment" label="Наличные" name="payment" radio-value="cash" />
+        <RadioInput id="payment-cash" v-model="payment" label="Наличные" name="payment" radio-value="Наличные" />
         <p v-for="(error, index) in payment.errors" :key="index">
           {{ error }}
         </p>

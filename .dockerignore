@@ -3,3 +3,25 @@
 node_modules
 .vscode
 .env
+
+
+# Nuxt dev/build outputs
+.output
+.data
+.nitro
+.cache
+dist
+
+
+# Logs
+logs
+*.log
+
+# Misc
+.DS_Store
+.fleet
+.idea
+
+# Local env files
+.env.*
+!.env.example

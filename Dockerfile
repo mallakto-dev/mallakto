@@ -9,17 +9,20 @@ WORKDIR /src
 # Build
 FROM base AS build
 
-COPY --link package.json package-lock.json .
+COPY --link package.json .
+COPY --link package-lock.json .
 RUN npm install
-RUN npm run postinstall
 
 COPY --link . .
+
+RUN npm run postinstall
 
 RUN npm run build
 
 # Run
 FROM base
 
+ARG PORT=3000
 ENV PORT=$PORT
 ENV NODE_ENV=production
 

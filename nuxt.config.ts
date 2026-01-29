@@ -10,9 +10,12 @@ export default defineNuxtConfig({
     '@nuxtjs/sanity',
   ],
   routeRules: {
-    'api/order': {
-      ssr: true
-    }
+    "/": {
+      prerender: true
+    },
+    "/products/**": {
+      prerender: true
+    },
   },
   typescript: {
     typeCheck: true

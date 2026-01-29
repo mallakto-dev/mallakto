@@ -11,6 +11,7 @@ FROM base AS build
 
 COPY --link package.json package-lock.json .
 RUN npm install
+RUN npm run postinstall
 
 COPY --link . .
 

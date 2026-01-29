@@ -15,14 +15,14 @@ export default defineNuxtConfig({
     }
   },
   typescript: {
-      typeCheck: true
+    typeCheck: true
   },
   sanity: {
     projectId: "dudbk6rk",
     dataset: "develop",
     minimal: true,
   },
-   app: {
+  app: {
     head: {
       title: 'Главная | Mallakto',
       htmlAttrs: {
@@ -30,17 +30,19 @@ export default defineNuxtConfig({
       },
     },
   },
-vite: {
+  vite: {
     optimizeDeps: {
       include: ['react-compiler-runtime', 'react', 'react-dom']
     },
   },
   runtimeConfig: {
-      BACKEND_URL: import.meta.env.BACKEND_URL
-    },
+    public: {
+      NUXT_BACKEND_URL: import.meta.env.NUXT_BACKEND_URL
+    }
+  },
   css: ['~/assets/css/main.css'],
   imports: {
-      dirs: ['types/*.ts'],
-    },
-    compatibilityDate: '2024-08-04'
+    dirs: ['types/*.ts'],
+  },
+  compatibilityDate: '2024-08-04'
 })

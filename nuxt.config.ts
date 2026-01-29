@@ -8,11 +8,10 @@ export default defineNuxtConfig({
     "@nuxt/fonts",
     '@vueuse/nuxt',
     '@nuxtjs/sanity',
-    '@nuxtjs/html-validator'
   ],
   routeRules: {
-    "*": {
-      static: true,
+    'api/order': {
+      ssr: true
     }
   },
   typescript: {

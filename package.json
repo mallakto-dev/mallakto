@@ -30,7 +30,7 @@
     "@nuxt/fonts": "^0.12.1",
     "@nuxt/icon": "^2.1.1",
     "@nuxtjs/html-validator": "2.1.0",
-    "@nuxtjs/sanity": "^2.0.0",
+    "@nuxtjs/sanity": "^2.1.0",
     "@vueuse/core": "^14.1.0",
     "@vueuse/nuxt": "^14.1.0",
     "eslint": "^9.35.0",

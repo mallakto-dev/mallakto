@@ -1,6 +1,6 @@
 ARG NODE_VERSION=22
 
-FROM node:${NODE_VERSION}-alpine AS base
+FROM node:${NODE_VERSION}-slim AS base
 
 ARG PORT=3000
 
@@ -10,7 +10,6 @@ WORKDIR /src
 FROM base AS build
 
 COPY --link package.json .
-COPY --link package-lock.json .
 RUN npm install
 
 COPY --link . .

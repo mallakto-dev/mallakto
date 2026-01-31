@@ -1,9 +1,10 @@
 const config = useRuntimeConfig()
+console.log('URL:', config.BACKEND_URL)
 export default defineEventHandler(async (event) => {
     try {
         const body = await readBody(event);
         if (body) {
-            const order = await fetch(`${config.public.NUXT_BACKEND_URL}/order`, {
+            const order = await fetch(`${config.BACKEND_URL}/order`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

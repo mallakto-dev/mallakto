@@ -32,9 +32,7 @@ export default defineNuxtConfig({
     },
   },
   runtimeConfig: {
-    public: {
-      NUXT_BACKEND_URL: import.meta.env.NUXT_BACKEND_URL
-    }
+    BACKEND_URL: process.env.BACKEND_URL
   },
   css: ['~/assets/css/main.css'],
   imports: {

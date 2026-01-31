@@ -9,13 +9,11 @@ export default defineNuxtConfig({
     '@vueuse/nuxt',
     '@nuxtjs/sanity',
   ],
-  routeRules: {
-    "/": {
-      prerender: true
-    },
-    "/products/**": {
-      prerender: true
-    },
+  nitro: {
+    prerender: {
+      crawlLinks: true,
+      routes: ['/', '/products/**', 'products/category/**', '/about', '/contacts',]
+    }
   },
   typescript: {
     typeCheck: true

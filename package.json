@@ -14,11 +14,11 @@
   "dependencies": {
     "@nuxt/image": "^2.0.0",
     "@pinia/nuxt": "^0.11.3",
-    "@sanity/image-url": "^2.0.2",
-    "libphonenumber-js": "^1.12.33",
+    "@sanity/image-url": "^2.0.3",
+    "libphonenumber-js": "^1.12.36",
     "pinia": "^3.0.4",
     "pinia-plugin-persistedstate": "^4.7.1",
-    "vue": "^3.5.21",
+    "vue": "^3.5.27",
     "vue-router": "^4.6.4",
     "vue3-toastify": "^0.2.8"
   },
@@ -26,17 +26,17 @@
     "@iconify-json/fa6-brands": "^1.2.6",
     "@iconify-json/fa6-solid": "^1.2.4",
     "@nuxt/devtools": "^3.1.1",
-    "@nuxt/eslint": "^1.12.1",
-    "@nuxt/fonts": "^0.12.1",
-    "@nuxt/icon": "^2.1.1",
+    "@nuxt/eslint": "^1.13.0",
+    "@nuxt/fonts": "^0.13.0",
+    "@nuxt/icon": "^2.2.1",
     "@nuxtjs/html-validator": "2.1.0",
     "@nuxtjs/sanity": "^2.1.0",
-    "@vueuse/core": "^14.1.0",
-    "@vueuse/nuxt": "^14.1.0",
-    "eslint": "^9.35.0",
-    "nuxt": "4.1.2",
-    "sass": "^1.97.1",
-    "typescript": "5.7.3",
-    "vue-tsc": "^3.2.1"
+    "@vueuse/core": "^14.2.0",
+    "@vueuse/nuxt": "^14.2.0",
+    "eslint": "^9.39.2",
+    "nuxt": "^4.3.0",
+    "sass": "^1.97.3",
+    "typescript": "5.9.3",
+    "vue-tsc": "^3.2.4"
   }
 }

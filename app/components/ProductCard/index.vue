@@ -37,7 +37,7 @@ const handleClick = () => {
         <NuxtImg :src="imgSrc" :alt="imgDescription" />
         <h3>{{ title }}</h3>
       </NuxtLink>
-      <p>{{ weight }}г</p>
+      <p>{{ weight }}</p>
       <p>{{ priceToRubles(price) }}</p>
     </div>
     <button @click="handleClick" type="button">Добавить в корзину +</button>

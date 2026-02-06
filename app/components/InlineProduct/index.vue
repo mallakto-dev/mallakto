@@ -24,7 +24,7 @@ defineProps({
               <p>{{item.title}}</p>
             </NuxtLink>
         </div>
-          <span>{{item.weight}} г</span>
+          <span>{{item.weight}}</span>
           <QuantityPicker
         :is-inline="true"
         :number-of-items="item.quantity"

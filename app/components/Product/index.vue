@@ -65,7 +65,7 @@ const handleClick = () => {
         <strong>Пищевая ценность:</strong> {{ nutritonalFacts }}
       </p>
       <p>
-        <strong>Вес:</strong> {{ weight }} г
+        <strong>Вес:</strong> {{ weight }}
       </p>
       <p>
         <strong>Срок Годности: </strong>

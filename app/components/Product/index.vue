@@ -73,8 +73,8 @@ const handleClick = () => {
       </p>
       <QuantityPicker
         :is-inline="false"
-        :increase="increase"
-        :decrease="decrease"
+        @increase="increase"
+        @decrease="decrease"
         :number-of-items="numberOfitems"
         :is-label-displayed="true"
       />

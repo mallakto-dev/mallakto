@@ -29,12 +29,15 @@ export default defineNuxtConfig({
       htmlAttrs: {
         lang: 'ru',
       },
+      link: [
+        { rel: 'icon', href: '/favicon.ico' },
+        { rel: 'icon', type: 'image/png', sizes: '16x16', href: '/favicon-16x16.png' },
+        { rel: 'icon', type: 'image/png', sizes: '32x32', href: '/favicon-32x32.png' },
+      ],
     },
   },
   runtimeConfig: {
-    public: {
-      NUXT_BACKEND_URL: import.meta.env.NUXT_BACKEND_URL
-    }
+    BACKEND_URL: process.env.BACKEND_URL
   },
   css: ['~/assets/css/main.css'],
   imports: {

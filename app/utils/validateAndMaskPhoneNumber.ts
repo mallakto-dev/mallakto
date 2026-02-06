@@ -1,6 +1,9 @@
-import { parsePhoneNumberFromString } from 'libphonenumber-js';
+import { parsePhoneNumberFromString,  } from 'libphonenumber-js';
 
 export const validateAndMaskPhoneNumber = (val: string) => {
-        const phoneNumber = parsePhoneNumberFromString(val);
-        return phoneNumber?.isValid() ? phoneNumber.formatInternational() : false;
+        const phoneNumber = parsePhoneNumberFromString(val, 'RU');
+        if (phoneNumber) {
+                return phoneNumber?.isValid() || phoneNumber?.isPossible()  ? phoneNumber?.formatNational() : false;
+        }
+        return false;
 }

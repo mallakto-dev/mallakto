@@ -73,7 +73,7 @@ const onSubmit = async (e: Event) => {
       payment_type: payment.value.value,
       address: "",
       order_items: getOrderItems.value,
-      total: cartStore.cartTotal,
+      total: cartStore.totalPrice,
     };
     if (delivery.value.value) {
       data.address = address.value.value;

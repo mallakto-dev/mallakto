@@ -36,7 +36,7 @@ export const useCartStore = defineStore(
         function addProduct(product: CartProduct) {
             const productInCart = cart.value.find((p) => p.id === product.id);
             if (productInCart) {
-                increaseQuantity(product.id);
+                increaseQuantity(product.id, product.quantity);
             } else {
             cart.value.push(product);
             }
@@ -44,10 +44,10 @@ export const useCartStore = defineStore(
         function removeProduct(id: string) {
             cart.value = cart.value.filter((p) => p.id !== id);
         };
-        function increaseQuantity(id: string){
+        function increaseQuantity(id: string , quantity: number = 1) {
             const product = cart.value.find((p) => p.id === id);
             if (product) {
-                product.quantity++;
+                product.quantity += quantity;
             }
         }
         function decreaseQuantity (id: string) {

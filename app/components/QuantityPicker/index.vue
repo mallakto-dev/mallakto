@@ -1,19 +1,15 @@
 <script setup lang="ts">
-
-
 const props = defineProps<{
-    numberOfItems: number,
-    isInline: boolean,
-    className?: string
-}>()
+  numberOfItems: number;
+  isInline: boolean;
+  className?: string;
+}>();
 
-defineEmits(['increase', 'decrease'])
+defineEmits(["increase", "decrease"]);
 
-
-  const handleChange = (e:Event) => {
-    (e.target as HTMLInputElement).value = props.numberOfItems.toString();
-  };
-
+const handleChange = (e: Event) => {
+  (e.target as HTMLInputElement).value = props.numberOfItems.toString();
+};
 </script>
 
 <template>
@@ -30,8 +26,8 @@ defineEmits(['increase', 'decrease'])
       name="productQuantity"
       :value="numberOfItems"
       aria-label="Количество товара которое будет добавленно в корзину"
-      @change="{handleChange}"
-    >
+      @change="{ handleChange }"
+    />
     <button
       aria-label="Увеличить количество товара в корзине на один"
       @click="$emit('increase')"
@@ -42,13 +38,12 @@ defineEmits(['increase', 'decrease'])
   </div>
 </template>
 
-  <style scoped lang="scss">
-
+<style scoped lang="scss">
 div {
   display: flex;
   flex-direction: row;
   align-items: center;
-  gap: .4rem;
+  gap: 0.4rem;
 }
 
 button {
@@ -79,7 +74,4 @@ input {
     margin: 0;
   }
 }
-
-
-
 </style>

@@ -16,15 +16,15 @@ const { id, title, price, weight, imgSrc, slug, categorySlug } = defineProps<{
 const { addProduct } = useCartStore();
 const { notifySuccess } = useToast();
 
-const numberOfitems = ref<number>(1);
+const numberOfItems = ref<number>(1);
 
 const increase = () => {
-  numberOfitems.value++;
+  numberOfItems.value++;
 };
 
 const decrease = () => {
-  if (numberOfitems.value > 0) {
-    numberOfitems.value--;
+  if (numberOfItems.value > 0) {
+    numberOfItems.value--;
   }
 };
 
@@ -37,7 +37,7 @@ const handleClick = () => {
     weight,
     categorySlug,
     slug,
-    quantity: numberOfitems.value,
+    quantity: numberOfItems.value,
     imgSrc: imgSrc,
   });
 };
@@ -60,7 +60,7 @@ const handleClick = () => {
         :is-inline="false"
         @increase="increase"
         @decrease="decrease"
-        :number-of-items="numberOfitems"
+        :number-of-items="numberOfItems"
         :is-label-displayed="true"
       />
       <button @click="handleClick" type="button">

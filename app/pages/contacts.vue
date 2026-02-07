@@ -28,7 +28,7 @@
           стоимость рассчитывается индивидуально.
         </p>
         <div>
-          <span>По вопросам сотрудничества пишите:</span>
+          <p>По вопросам сотрудничества пишите:</p>
           <p>
             <a href="mailto:chefirkin@gmail.com">chefirkin@gmail.com</a>
           </p>
@@ -40,10 +40,10 @@
 </template>
 
 
-<style scoped>
+<style lang="scss" scoped>
 section {
   width: 100%;
-  font-size: 1rem;
+  font-size: 1.1rem;
   margin: 2rem auto;
 
   @media (min-width: 520px) {

@@ -1,4 +1,6 @@
-*, *::before, *::after {
+*,
+*::before,
+*::after {
     box-sizing: border-box;
 }
 
@@ -9,47 +11,58 @@ body {
     font-family: 'Manrope', sans-serif;
     color: #004530;
     font-weight: 400;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
 }
 
 a {
     text-decoration: none;
     color: #004530;
     cursor: pointer;
-
-    &:visited {
-        color: #004530;
-    }
-
-    &:hover {
-        color: #2c6855;
-    }
 }
 
-button, input, select, textarea {
+a:visited {
+    color: #004530;
+}
+
+a:hover {
+    color: #2c6855;
+}
+
+button,
+input,
+select,
+textarea {
     font-family: inherit;
     font-size: 100%;
 }
 
 button:focus {
-        outline: 3px solid #1da1f2;
-        outline-offset: 2px;
-    }
+    outline: 3px solid #1da1f2;
+    outline-offset: 2px;
+}
 
 
 main {
     width: 100%;
-    padding: 0;
+    padding: 2rem;
+    margin: 0 auto;
     display: flex;
     flex-direction: column;
-    min-height: 100vh;
-    padding-top: 10%;
-  
-    @media (min-width: 768px) {
-      width: 95%;
-      margin: 0 auto;
-    }
+    flex: 1;
+    gap: 10rem;
+}
 
-    @media (min-width: 1024px) {
-      width: 90%;
+@media (min-width: 768px) {
+    main {
+        width: 95%;
+    }
+}
+
+@media (min-width: 1024px) {
+    main {
+        width: 90%;
     }
 }

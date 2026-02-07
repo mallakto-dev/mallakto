@@ -1,23 +1,20 @@
-<script setup  lang="ts">
-
-
+<script setup lang="ts">
 const { id, title, price, weight, imgSrc, slug, categorySlug } = defineProps<{
-  id: string,
-  title: string,
-  price: number,
-  ingredients: string,
-  nutritonalFacts: string,
-  weight: string,
-  imgSrc: string,
-  bestBefore: string,
-  imgDescription: string,
-  slug: string,
-  categorySlug: string
+  id: string;
+  title: string;
+  price: number;
+  ingredients: string;
+  nutritonalFacts: string;
+  weight: string;
+  imgSrc: string;
+  bestBefore: string;
+  imgDescription: string;
+  slug: string;
+  categorySlug: string;
 }>();
 
 const { addProduct } = useCartStore();
 const { notifySuccess } = useToast();
-
 
 const numberOfitems = ref<number>(1);
 
@@ -42,31 +39,19 @@ const handleClick = () => {
     slug,
     quantity: numberOfitems.value,
     imgSrc: imgSrc,
-  })
+  });
 };
-
 </script>
-
-
 
 <template>
   <section>
-    <NuxtImg
-      :src="imgSrc"
-      :alt="imgDescription"
-    />
+    <div><NuxtImg :src="imgSrc" :alt="imgDescription" /></div>
     <div>
       <h2>{{ title }}</h2>
       <span>{{ priceToRubles(price) }}</span>
-      <p>
-        <strong>Состав:</strong>  {{ ingredients }}
-      </p>
-      <p>
-        <strong>Пищевая ценность:</strong> {{ nutritonalFacts }}
-      </p>
-      <p>
-        <strong>Вес:</strong> {{ weight }}
-      </p>
+      <p><strong>Состав:</strong> {{ ingredients }}</p>
+      <p><strong>Пищевая ценность:</strong> {{ nutritonalFacts }}</p>
+      <p><strong>Вес:</strong> {{ weight }}</p>
       <p>
         <strong>Срок Годности: </strong>
         {{ bestBefore }}
@@ -80,37 +65,35 @@ const handleClick = () => {
       />
       <button @click="handleClick" type="button">
         Добавить в корзину
-        <Icon
-        name="fa6-solid:cart-shopping"
-      />
+        <Icon name="fa6-solid:cart-shopping" />
       </button>
     </div>
   </section>
 </template>
 
-
 <style scoped lang="scss">
-
 section {
-  display: grid;
-  grid-template-columns: 1fr;
-  margin: 2rem;
+  display: flex;
+  flex-direction: column;
   gap: 2rem;
 
   @media (min-width: 1200px) {
-    grid-template-columns: 1fr 1fr;
-    margin: 0;
-    margin-bottom: 4rem;
+    flex-direction: row;
+    margin: 0 auto;
+    max-width: 980px;
   }
 }
 
+h2 {
+  margin-top: 0;
+}
+
 img {
-    width: 100%;
+  width: 100%;
 }
 
 div {
   width: 100%;
-
 }
 
 span {
@@ -136,5 +119,4 @@ button {
     opacity: 0.8;
   }
 }
-
 </style>

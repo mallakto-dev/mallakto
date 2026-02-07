@@ -3,8 +3,8 @@
 
 const props = defineProps<{
     numberOfItems: number,
-    isLabelDisplayed: boolean,
     isInline: boolean,
+    className?: string
 }>()
 
 defineEmits(['increase', 'decrease'])
@@ -17,10 +17,7 @@ defineEmits(['increase', 'decrease'])
 </script>
 
 <template>
-  <div>
-    <p v-if="isLabelDisplayed">
-      Количество
-    </p>
+  <div :class="className">
     <button
       aria-label="Уменьшить количество товара в корзине на один"
       @click="$emit('decrease')"
@@ -30,6 +27,7 @@ defineEmits(['increase', 'decrease'])
     </button>
     <input
       type="number"
+      name="productQuantity"
       :value="numberOfItems"
       aria-label="Количество товара которое будет добавленно в корзину"
       @change="{handleChange}"
@@ -62,7 +60,6 @@ button {
 
 p {
   line-height: 1;
-  margin-right: 1rem;
 }
 
 input {

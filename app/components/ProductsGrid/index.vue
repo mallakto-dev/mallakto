@@ -20,9 +20,6 @@ defineProps({
 </template>
 
 <style scoped lang="scss">
-section {
-  margin: 6rem 2rem;
-}
 
 ul {
   display: grid;

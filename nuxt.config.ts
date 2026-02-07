@@ -35,6 +35,7 @@ export default defineNuxtConfig({
         { rel: 'icon', type: 'image/png', sizes: '32x32', href: '/favicon-32x32.png' },
       ],
     },
+    rootTag: 'body',
   },
   runtimeConfig: {
     BACKEND_URL: process.env.BACKEND_URL

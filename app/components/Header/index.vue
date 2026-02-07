@@ -33,7 +33,7 @@ header {
   border: 2px solid rgb(0, 69, 48);
   border-top: none;
   background-color: rgb(255, 253, 250);
-  position: fixed;
+  position: sticky;
   left: 0;
   right: 0;
   top: 0px;

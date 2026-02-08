@@ -10,26 +10,24 @@ const isMobile = useMediaQuery("(max-width: 767px)");
 const emit = defineEmits(["closeNav"]);
 
 const isDropdownOpen = ref(false);
-const dropdownRef = ref<HTMLElement | null>(null);
+const dropdownRef = useTemplateRef<HTMLElement>("dropdownRef");
 
 const handleDropdownClick = () => {
   isDropdownOpen.value = !isDropdownOpen.value;
 };
 
-const closeDropdown = () => {
+const closeDropdownAndNav = () => {
   isDropdownOpen.value = false;
+  emit("closeNav");
 };
 
-onClickOutside(dropdownRef, closeDropdown);
+onClickOutside(dropdownRef, closeDropdownAndNav);
 
-watch(
-  isMobile,
-  () => {
-    if (!isMobile.value) {
-      emit("closeNav");
-    }
+watch(isMobile, () => {
+  if (!isMobile.value) {
+    emit("closeNav");
   }
-);
+});
 
 const query = groq`*[_type == "category"]{
   "id": _id,
@@ -41,9 +39,8 @@ const query = groq`*[_type == "category"]{
 const sanity = useSanity();
 
 const { data } = await useAsyncData("categories", () =>
-  sanity.fetch<Category[]>(query)
+  sanity.fetch<Category[]>(query),
 );
-
 </script>
 <template>
   <nav id="navigation">
@@ -75,7 +72,12 @@ const { data } = await useAsyncData("categories", () =>
           role="menu"
           aria-label="Продукция"
         >
-          <li v-for="category in data" :key="category.id" class="dropdown-item">
+          <li
+            v-for="category in data"
+            :key="category.id"
+            class="dropdown-item"
+            @click="closeDropdownAndNav"
+          >
             <Icon size="1em" name="fa6-solid:angle-right" />
             <NuxtLink tabindex="0" :to="`/products/${category.slug.current}`">
               {{ category.title }}

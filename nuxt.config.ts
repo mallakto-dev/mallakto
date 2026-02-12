@@ -15,6 +15,10 @@ export default defineNuxtConfig({
   nitro: {
     prerender: {
       crawlLinks: true,
+      routes: ['/', '/about', '/contacts', '/products/**', '/products/category/**', ],
+    },
+    routeRules: {
+      '/api/order': { static: false },
     }
   },
   typescript: {

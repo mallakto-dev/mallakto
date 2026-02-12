@@ -1,5 +1,5 @@
-const config = useRuntimeConfig()
-console.log('URL:', config.BACKEND_URL)
+const config = useRuntimeConfig();
+
 export default defineEventHandler(async (event) => {
     try {
         const body = await readBody(event);

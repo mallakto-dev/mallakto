@@ -1,3 +1,9 @@
+<script setup lang="ts">
+useHead({
+  title: "О нас",
+  });
+</script>
+
 <template>
   <main>
     <section class="container">

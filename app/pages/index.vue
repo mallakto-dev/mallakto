@@ -1,4 +1,9 @@
 <script setup lang="ts">
+
+useHead({
+  title: "Главная",
+});
+
 import type { Product } from '~/types/product';
 
 const query = groq`*[_type == "product"]{

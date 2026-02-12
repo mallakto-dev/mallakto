@@ -29,6 +29,10 @@ const categoryKey = computed(() => `category-${route.params.category}`)
 
 const { data } = useAsyncData(categoryKey, () => sanity.fetch<Category>(query, { slug: route.params.category }))
 
+useHead({
+  title: computed(() => data.value ? data.value.title : "Продукция"),
+});
+
 </script>
 
 <template>

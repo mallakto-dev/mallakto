@@ -1,4 +1,15 @@
-
+<script setup lang="ts">
+ useHead({
+  title: "Контакты",
+  meta: [
+    {
+      name: "description",
+      content:
+        "Контактная информация для связи с Mallakto, адрес,телефон и электронная почта.",
+    },
+  ],
+  });
+</script>
 
 <template>
 <main>

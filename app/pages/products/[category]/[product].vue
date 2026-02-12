@@ -3,11 +3,9 @@ const route = useRoute();
 
 const { data: products } = useNuxtData<Product[]>("products");
 
-const categoryKey = computed(() => `category-${route.params.category}`)
+const categoryKey = computed(() => `category-${route.params.category}`);
 
-const { data: category } = useNuxtData<Category>(
-  categoryKey.value,
-);
+const { data: category } = useNuxtData<Category>(categoryKey.value);
 
 const product = computed(() => {
   if (products.value === undefined) {
@@ -21,6 +19,10 @@ const product = computed(() => {
       p.category.slug.current === route.params.category &&
       p.slug.current === route.params.product,
   );
+});
+
+useHead({
+  title: computed(() => product.value ? product.value.title : "Продукт"),
 });
 </script>
 

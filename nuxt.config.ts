@@ -27,7 +27,6 @@ export default defineNuxtConfig({
   },
   app: {
     head: {
-      title: 'Главная | Mallakto',
       htmlAttrs: {
         lang: 'ru',
       },

@@ -54,6 +54,7 @@ header {
     justify-content: space-between;
     border-radius: 10px;
     border: 2px solid rgb(0, 69, 48);
+    overflow: visible;
     }
   }
 

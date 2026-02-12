@@ -38,7 +38,7 @@ const query = groq`*[_type == "category"]{
 
 const sanity = useSanity();
 
-const { data } = await useAsyncData("categories", () =>
+const { data } = useAsyncData("categories", () =>
   sanity.fetch<Category[]>(query),
 );
 </script>

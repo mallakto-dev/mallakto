@@ -9,10 +9,12 @@ export default defineNuxtConfig({
     '@vueuse/nuxt',
     '@nuxtjs/sanity',
   ],
+  experimental: {
+    purgeCachedData: false,
+  },
   nitro: {
     prerender: {
       crawlLinks: true,
-      routes: ['/', '/products/**', 'products/category/**', '/about', '/contacts',]
     }
   },
   typescript: {

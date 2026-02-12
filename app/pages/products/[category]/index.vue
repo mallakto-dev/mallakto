@@ -22,10 +22,12 @@ const query = groq`*[_type == "category" && slug.current == $slug][0]{
   }
 }`
 
-const { params } = useRoute();
+const route = useRoute();
 const sanity = useSanity()
 
-const { data } = useAsyncData(`category-${params.category}`, () => sanity.fetch<Category>(query, { slug: params.category }))
+const categoryKey = computed(() => `category-${route.params.category}`)
+
+const { data } = useAsyncData(categoryKey, () => sanity.fetch<Category>(query, { slug: route.params.category }))
 
 </script>
 
@@ -39,7 +41,7 @@ const { data } = useAsyncData(`category-${params.category}`, () => sanity.fetch<
         :title="product.title"
         :price="product.price"
         :weight="product.weight"
-        :category-slug="`${$route.params.category}`"
+        :category-slug="`${route.params.category}`"
         :slug="product.slug.current"
         :img-src="product.img_url"
         :img-description="product.img_caption"

@@ -3,8 +3,10 @@ const route = useRoute();
 
 const { data: products } = useNuxtData<Product[]>("products");
 
+const categoryKey = computed(() => `category-${route.params.category}`)
+
 const { data: category } = useNuxtData<Category>(
-  `category-${route.params.category}`,
+  categoryKey.value,
 );
 
 const product = computed(() => {
@@ -30,7 +32,7 @@ const product = computed(() => {
       :title="product.title"
       :price="product.price"
       :weight="product.weight"
-      :category-slug="`${$route.params.category}`"
+      :category-slug="`${route.params.category}`"
       :img-src="product.img_url"
       :img-description="product.img_caption"
       :slug="product.slug.current"

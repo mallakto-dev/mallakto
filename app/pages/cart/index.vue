@@ -5,7 +5,6 @@ const { cart, totalPrice } = toRefs(cartStore);
 
 definePageMeta({
   title: "Корзина",
-  description: "Корзина с товарами",
 });
 
 const totalInRubles = computed(() => priceToRubles(totalPrice.value));

@@ -8,17 +8,26 @@ export default defineNuxtConfig({
     "@nuxt/fonts",
     '@vueuse/nuxt',
     '@nuxtjs/sanity',
+    '@nuxtjs/sitemap',
+    '@nuxtjs/robots',
   ],
+  site: {
+    url: 'https://mallakto.ru',
+    name: 'Mallakto, московский веган-кооператив',
+    zeroRuntime: true,
+  },
   experimental: {
     purgeCachedData: false,
   },
   nitro: {
     prerender: {
       crawlLinks: true,
-      routes: ['/', '/about', '/contacts', '/products/**', '/products/category/**', ],
+      routes: ['/', '/about', '/contacts', '/products/**', ],
     },
     routeRules: {
       '/api/order': { static: false },
+      '/cart': { robots: false },
+      '/checkout/**': { robots: false },
     }
   },
   typescript: {

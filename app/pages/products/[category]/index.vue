@@ -1,4 +1,5 @@
 <script setup lang="ts">
+useRobotsRule('index, follow')
 
 const query = groq`*[_type == "category" && slug.current == $slug][0]{
   "id": _id,
@@ -16,9 +17,6 @@ const query = groq`*[_type == "category" && slug.current == $slug][0]{
     "slug": slug,
     "img_url": image.asset->url,
     "img_caption": image.alt,
-    "ingredients": ingredients,
-    "nutritonal_facts": nutritonal_facts,
-    "bestBefore": bestBefore
   }
 }`
 

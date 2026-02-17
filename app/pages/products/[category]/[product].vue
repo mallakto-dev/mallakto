@@ -1,28 +1,54 @@
 <script lang="ts" setup>
+useRobotsRule("index, follow");
+
 const route = useRoute();
 
-const { data: products } = useNuxtData<Product[]>("products");
+const query = groq`*[_type == "product" && slug.current == $slug][0]{
+  "id": _id,
+  "title": title,
+  "slug": slug,
+  "title": title,
+  "price": price,
+  "weight": weight,
+  "slug": slug,
+  "img_url": image.asset->url,
+  "img_caption": image.alt,
+  "ingredients": ingredients,
+  "nutritonal_facts": nutritonal_facts,
+  "bestBefore": bestBefore,
+  "description": metaContent.description,
+  "keywords": metaContent.keywords
+}`;
 
-const categoryKey = computed(() => `category-${route.params.category}`);
+const sanity = useSanity();
 
-const { data: category } = useNuxtData<Category>(categoryKey.value);
+const productKey = computed(
+  () => `${route.params.category}-${route.params.product}`,
+);
 
-const product = computed(() => {
-  if (products.value === undefined) {
-    // Fallback to category data if products are not available
-    return category.value?.items.find(
-      (p) => p.slug.current === route.params.product,
-    );
-  }
-  return products.value?.find(
-    (p) =>
-      p.category.slug.current === route.params.category &&
-      p.slug.current === route.params.product,
-  );
-});
+const { data: product } = useAsyncData(productKey, () =>
+  sanity.fetch<Product>(query, {
+    slug: route.params.product,
+  }),
+);
+
 
 useHead({
-  title: computed(() => product.value ? product.value.title : "Продукт"),
+  title: computed(() => (product.value ? product.value.title : "Продукт")),
+  meta: [
+    {
+      name: "keywords",
+      content: computed(() =>
+        product.value ? product.value.keywords : "",
+      ),
+    },
+    {
+      name: "description",
+      content: computed(() =>
+        product.value ? product.value.description : "Описание продукта",
+      ),
+    },
+  ],
 });
 </script>
 

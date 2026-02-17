@@ -8,7 +8,8 @@ export interface Product {
         slug: { current: string }
     }
     ingredients: string
-    metaContent?: { keywords: string, _type: "metadata", description: string }
+    keywords: string,
+    description: string,
     nutritonal_facts: string
     price: number
     slug: { current: string }

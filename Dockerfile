@@ -1,6 +1,6 @@
-ARG NODE_VERSION=22
+ARG NODE_VERSION=22.22.0
 
-FROM node:${NODE_VERSION}-slim AS base
+FROM node:${NODE_VERSION}-bookworm-slim AS base
 
 ARG PORT=3000
 
@@ -9,8 +9,8 @@ WORKDIR /src
 # Build
 FROM base AS build
 
-COPY --link package.json .
-RUN npm install
+COPY --link package.json package-lock.json ./
+RUN npm ci
 
 COPY --link . .
 
